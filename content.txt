@@ -1,0 +1,73 @@
+
+# course overview
+
+1. what and why of Docker?
+2. Docker vs Virtual Machines
+3. install Docker locally
+4. images vs containers
+5. Public and Private Registries
+6. Run Containers
+7. create own images(Dockerfile)
+8. Main Docker commands
+9. Image Versioning
+10. Docker Workflow Big Picture
+
+
+
+# Docker
+- A standardize unit, that has everything the application needs to run.
+
+# Docker Images vs Docker COntainers
+- Docker Images: An executable application artifact.(i.e, Application, Any services needed, OS Layer)
+- Docker Container: Starts the application.
+
+- You can run multiple containers form 1 image.
+
+# Docker Registries
+- A storage and distribution system for Docker images.
+- Official images available from applications like Redis, Mongo, Postgres etc.
+
+# Main Docker Commands:
+- docker ps
+- docker images
+- docker pull nginx:1.27...docker pull {name}:{tag}...'pull an image from registry'
+- docker run nginx:1.27
+- docker run -d nginx:1.27....-d --detach
+- docker ps, docker logs {id}/{container}
+- docker ps -a
+- docker stop {container}...multiple(docker stop {container} {container})
+- docker start {container}
+
+# Port Binding
+- Application inside container runs in an isolated Docker Network
+- We need to expose the container port to the host (the machine the container runs on)
+
+RUN: docker stop {container}...stop one or more running containers
+### this one is the nginx runs on port 80 and we bund the port with 9000/we can change it. mysql runs on port 3306
+RUN: docker run -d -p 9000:80 nginx:1.27
+
+### Assign name to container
+RUN: docker run --name web-app -d -p 9000:80 nginx:1.27
+RUN: docker logs web-app
+
+# Public vs Private Docker Registries
+## public:
+- anyone can search and download Docker images
+## private
+- you need to authenticate before accessing the registry.
+
+# Docker Registry vs Docker Repository
+## Docker Registry
+- A service Providing Storage
+- Collection of repositories
+## Docker Repository
+- collection of related images with same name but different versions.
+
+# Dockerfile: definition of how to build an image from our application.
+- is a text document that contains commands to assemble an image.
+- Docker can then build and image by reading those instructions.
+
+
+
+
+
